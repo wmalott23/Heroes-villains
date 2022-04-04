@@ -23,9 +23,7 @@ def supers_list(request):
         for each in supers:
             sup_response = Super.objects.filter(super_type__type=each.type)
             super_serializer = SuperSerializer(sup_response, many=True)
-            custom_response_dict[each.type] = {
-                "": super_serializer.data
-            }
+            custom_response_dict[each.type] = super_serializer.data
         return Response(custom_response_dict)
     elif request.method == 'POST':
         serializer = SuperSerializer(data=request.data)
