@@ -6,7 +6,7 @@ from rest_framework import status
 from super_types.models import SuperType
 from super_types.serializers import SuperTypeSerializer
 from .serializers import SuperSerializer
-from .models import Super
+from .models import Super, Power
 
 # Create your views here.
 
@@ -45,3 +45,15 @@ def supers_detail(request, pk):
     elif request.method == 'DELETE':
         name.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['PATCH'])
+def supers_power(request, pk, powers):
+    name = get_object_or_404(Super, pk=pk)
+    power = get_object_or_404(Power, Power__id=powers)
+    if request.method == 'PATCH':
+        name.powers.append(power)
+        serializer = SuperSerializer(name, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
