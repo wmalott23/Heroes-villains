@@ -16,11 +16,10 @@ def supers_list(request):
         type_param = request.query_params.get('type')
         custom_response_dict = {}
         supers = SuperType.objects.all()
-        sup_response = Super.objects.all()
         if type_param:
             supers = SuperType.objects.filter(type=type_param)
-            sup_response = Super.objects.filter(super_type__type=type_param)
         for each in supers:
+            sup_response = Super.objects.filter(super_type__type=each.type)
             super_serializer = SuperSerializer(sup_response, many=True)
             custom_response_dict[each.type] = {
                 "supers": super_serializer.data
