@@ -14,10 +14,10 @@ def supers_list(request):
     if request.method == 'GET':
         custom_response_dict = {}
         super_types = Super.objects.all()
-        for super in supers:
-            supers = Super.objects.filter(type=super.type)
+        for each in super_types:
+            supers = Super.objects.filter(type=each.type)
             super_serializer = SuperSerializer(supers, many=True)
-            custom_response_dict[super.type] = {
+            custom_response_dict[each.type] = {
                 "supers": super_serializer.data
             }
         return Response(custom_response_dict)
