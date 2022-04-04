@@ -17,12 +17,14 @@ def supers_list(request):
         custom_response_dict = {}
         supers = SuperType.objects.all()
         if type_param:
-            supers = SuperType.objects.filter(type=type_param)
+            supers = Super.objects.filter(super_type__type=type_param)
+            serializer = SuperSerializer(supers, many=True)
+            return Response(serializer.data)
         for each in supers:
             sup_response = Super.objects.filter(super_type__type=each.type)
             super_serializer = SuperSerializer(sup_response, many=True)
             custom_response_dict[each.type] = {
-                "supers": super_serializer.data
+                "": super_serializer.data
             }
         return Response(custom_response_dict)
     elif request.method == 'POST':
