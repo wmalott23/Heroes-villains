@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "52d10827-df17-4cf8-b361-36c0de2b79fd",
+		"_postman_id": "ad98f2a8-9b2b-4c30-9e55-9d68b5c8b300",
 		"name": "Heroes_Villains_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -206,6 +206,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Patch_powers",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"powers\": \"Flight\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supers/2/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supers",
+								"2",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -247,6 +282,9 @@
 									"language": "json"
 								}
 							}
+						},
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []
@@ -255,7 +293,10 @@
 					"name": "Update_Super_Type",
 					"request": {
 						"method": "PUT",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				},
@@ -263,7 +304,10 @@
 					"name": "Delete_Super_Type",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
