@@ -188,7 +188,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/supers/5/",
+							"raw": "http://127.0.0.1:8000/api/supers/3/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -200,7 +200,7 @@
 							"path": [
 								"api",
 								"supers",
-								"5",
+								"3",
 								""
 							]
 						}
@@ -236,6 +236,32 @@
 								"supers",
 								"2",
 								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Super_Vs_Super",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/supers/Joker Two/Joker Three/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"supers",
+								"Joker Two",
+								"Joker Three",
 								""
 							]
 						}
