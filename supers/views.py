@@ -57,3 +57,27 @@ def supers_power(request, pk, id):
         serializer.save()
         return Response(serializer.data)
 
+@api_view(['GET'])
+def supers_battle(request, hero, vill):
+# find correct superheros/villains
+    super_1 = get_object_or_404(Super, super_name=hero)
+    super_2 = get_object_or_404(Super, super_name=vill)
+# find length of their powers
+    power_lvl1 = len(super_1.powers)
+    power_lvl2 = len(super_2.powers)
+# compare numbers
+    if power_lvl1 > power_lvl2:
+        winner = super_1
+        loser = super_2
+    elif power_lvl2 > power_lvl1:
+        winner = super_2
+        loser = super_1
+    else:
+        return Response(f'A victor could not be decided between f{super_1} and f{super_2}!!')
+# give output
+    custom_response_dict = {}
+    win_serializer = SuperSerializer(winner, many=True)
+    los_serializer = SuperSerializer(loser, many=True)
+    custom_response_dict["Winner"] = win_serializer.data
+    custom_response_dict["Loser :("] = los_serializer.data
+    return Response(win_serializer, los_serializer)
